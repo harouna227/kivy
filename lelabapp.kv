@@ -1,4 +1,70 @@
-PageLayoutExemple:
+ImageExemple:
+
+
+<ImageExemple@GridLayout>
+    cols: 3
+    Image:
+        source: 'images/silesia.jpg'
+    Image:
+        source: 'images/silesia.jpg'
+        allow_stretch: True
+    Image:
+        source: 'images/silesia.jpg'
+        keep_radio: False
+        allow_stretch: True
+    AsyncImage:
+        source: 'images/alienne.gif'
+        anim_delay: 1/60
+    
+   
+
+
+<WidgetExemple>
+    cols: 3
+    ToggleButton:
+        text: 'OFF'
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: '100dp'
+    Button:
+        text: 'Cliquez'
+        on_press: root.on_button_click()
+        disabled: not root.compteur_actif
+    Label:
+        text: root.mon_text
+        font_name: 'fonts/Lcd.ttf'
+        font_size: '60dp'
+        color: 1, .5, 1, 1
+    Switch:
+        id: mon_switch
+        on_active: root.on_switch_active(self)
+        active: True
+        size_hint: None, 1
+        width: '100dp'
+    Slider:
+        id: mon_slider
+        min: 0
+        max: 100
+        value: 50
+        disabled: not mon_switch.active
+        # on_value: root.on_slider_value(self)
+        orientation: 'vertical'
+    BoxLayout:
+        Label:
+            text: str(int(mon_slider.value))
+        ProgressBar:
+            max: 100
+            value: int(mon_slider.value)
+    TextInput:
+        id: nom_text_input
+        size_hint: None, 1
+        width: '100dp'
+        text: 'Geek'
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: 'Vous etes: ' +  root.text_input_str
+
 
 
 <PageLayoutExemple@PageLayout>
